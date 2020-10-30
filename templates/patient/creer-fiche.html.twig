@@ -1,0 +1,186 @@
+{% include "extension/sidebar.html.twig" %}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Creer une Fiche</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+                        <li class="breadcrumb-item active">Creer une fiche</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <!-- /.col -->
+            <div class="container-fluid">
+                <h6>Type de patient</h6>
+                <ul class="nav nav-tabs" id="custom-content-below-tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="custom-content-below-home-tab" data-toggle="pill" href="#custom-content-below-home" role="tab" aria-controls="custom-content-below-home" aria-selected="true">Particulier</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="custom-content-below-profile-tab" data-toggle="pill" href="#custom-content-below-profile" role="tab" aria-controls="custom-content-below-profile" aria-selected="false">Abonne</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="custom-content-below-tabContent">
+                    <div class="tab-pane fade show active" id="custom-content-below-home" role="tabpanel" aria-labelledby="custom-content-below-home-tab">
+                        <!-- FORMULAIRE DE CONSULTATION -->
+                        <div class="card card-default">
+                            <div class="card-header">
+                                <h3 class="card-title">FICHE DE CONSULTATION</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                    <!--              <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>-->
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                              <form action="" method="post">
+                                <div class="row">
+                                   <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="nomInput">Nom Complet</label>
+                                            <input type="text" class="form-control" id="nomInput"  placeholder="Nom & Post-nom" name="nomComplet">
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="">age du patient</label>
+                                                    <input type="number" class="form-control" name="age" placeholder="l'age du patient">
+                                                </div>
+                                            </div>
+                                           
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="genre">Sexe</label>
+                                            <select name="genre" id="genre" class="form-control">
+                                                <option value="Masculin">Masculin</option>
+                                                <option value="Feminin">Feminin</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="adressedomicile">Adresse</label>
+                                            <input type="text" class="form-control" name="adressedomicile" placeholder="Adresse">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="telephone">Numero telephone</label>
+                                            <input type="number" class="form-control" name="telephone" placeholder="Numero tel.">
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="form-control-label" for="select-type">Type de Patient</label>
+                                            <select id="select-type" class="form-control" name="idType">
+                                                {# {% for typ in type %} #}
+                                                    {# {% if typ.idType == NULL %} #}
+                                                        <option value="2" data-toggle="collapse" href="#collapseAbonne" role="button" aria-expanded="false" aria-controls="collapseAbonne">Abonné</option>
+                                                    {# {% else %} #}
+                                                        <option value="1" data-toggle="collapse" href="#collapsePrive" role="button" aria-expanded="false" aria-controls="collapsePrive">Privé</option>
+                                                    {# {% endif %} #}
+                                                {# {% endfor %} #}
+                                            </select>
+                                        </div>
+                                    
+                                        <div class="collapse" id="collapseAbonne">
+                                            <div class="form-group">
+                                                <label for="nomSociete">nom de la société</label>
+                                                <input type="text" class="form-control" name="nomSociete" placeholder="ex: insoftware">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="matricule">matricule de l'agent</label>
+                                                <input type="text" class="form-control" name="matricule" placeholder="ex: lmb0056">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="numeroBon">numero  du bon</label>
+                                                <input type="number" class="form-control" name="numeroBon" placeholder="ex: 7998">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="etat">active</label>
+                                                <input type="number" class="form-control" name="etat" placeholder="ex : 1 ou 0">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            {# <div class="text-center"> #}
+                                            <button type="submit" class="btn btn-outline-primary btn-block"><i class="fa fa-save text-white"></i>  Enregistrer</button>
+                                        </div>
+                                    </div>
+                              </div>
+                                </form>
+                                </div>
+    
+                            </div>
+                        </div>
+
+
+                    {{form_start(patientForm)}}
+                        {{form_row(patientForm.nomSociete)}}
+                    {{form_end(patientForm)}}
+
+                        <div class="tab-pane fade" id="custom-content-below-profile" role="tabpanel" aria-labelledby="custom-content-below-profile-tab">
+                        <!-- FORMULAIRE DE CONSULTATION -->
+                        <div class="card card-default">
+                            <div class="card-header">
+                                <h3 class="card-title">FICHE DE CONSULTATION</h3>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                                    <!--              <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>-->
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h3 class="card-title">PATIENTS PRIVES</h3></br>
+                                         <table class="table">
+                                                <tr>
+                                                    <th>numero fiche</th>
+                                                    <th>nom du patient</th>
+                                                    <th>voir</th>
+                                                </tr>
+                                         </table>
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                        <h3 class="card-title">PATIENTS ABONNES</h3></br>
+                                             <table class="table">
+                                                <tr>
+                                                    <th>numero fiche</th>
+                                                    <th>nom du patient</th>
+                                                    <th>matricule</th>
+                                                    <th>voir</th>
+                                                </tr>
+                                             </table>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+
+    <a id="back-to-top" href="#" class="btn btn-primary back-to-top" role="button" aria-label="Scroll to top">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+</div>
+<!-- /.content-wrapper -->
+{% include "/extension/footer.html.twig" %}
